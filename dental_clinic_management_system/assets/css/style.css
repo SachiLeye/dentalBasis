@@ -1,0 +1,108 @@
+/* assets/css/style.css */
+
+/* General Styling */
+body {
+    background-color: #f0f4f8; /* Light cool background */
+    color: #333; /* Dark gray text */
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 50px; /* Added margin to ensure content is not hidden behind footer */
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #004b63; /* Dark blue-green color */
+    color: #fff;
+}
+
+.navbar .nav-link {
+    color: #f0f4f8 !important;
+}
+
+.navbar .nav-link:hover {
+    background-color: #007b8f; /* Slightly lighter for hover effect */
+    color: #fff !important;
+}
+
+/* Form Styling */
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #007b8f;
+    border-color: #007b8f;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #005f70;
+}
+
+/* Table Styling */
+.table {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table th {
+    background-color: #007b8f;
+    color: #fff;
+}
+
+.table td {
+    padding: 12px;
+}
+
+/* Card Styling */
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #004b63;
+    color: #f0f4f8;
+    text-align: center;
+    position: fixed;  /* Changed from absolute to fixed */
+    padding: 10px 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000; /* Optional: to ensure it stays above other elements */
+}
+
+/* Smooth transitions for all elements */
+* {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar .nav-link {
+        padding-left: 20px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    footer {
+        font-size: 14px; /* Slightly smaller font for smaller screens */
+        padding: 8px 0; /* Reduced padding */
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        font-size: 12px; /* Smaller font for mobile devices */
+        padding: 6px 0; /* Reduced padding for smaller screens */
+    }
+}
