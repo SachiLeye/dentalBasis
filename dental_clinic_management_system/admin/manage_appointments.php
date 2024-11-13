@@ -13,7 +13,7 @@ $search_service = isset($_POST['search_service']) ? trim($_POST['search_service'
 $search_status = isset($_POST['search_status']) ? trim($_POST['search_status']) : '';
 
 // Build the base SQL query
-$sql = "SELECT a.appointment_id, p.first_name, p.last_name, a.appointment_date, s.service_name, a.status
+$sql = "SELECT a.appointment_id, p.firstName, p.lastName, a.appointment_date, s.service_name, a.status
         FROM appointments a
         JOIN patients p ON a.patient_id = p.patient_id
         JOIN services s ON a.service_id = s.service_id
@@ -22,7 +22,7 @@ $sql = "SELECT a.appointment_id, p.first_name, p.last_name, a.appointment_date, 
 
 // Add conditions dynamically based on search inputs
 if (!empty($search_patient)) {
-    $sql .= " AND (p.first_name LIKE '%" . $search_patient . "%' OR p.last_name LIKE '%" . $search_patient . "%')";
+    $sql .= " AND (p.firstName LIKE '%" . $search_patient . "%' OR p.lastName LIKE '%" . $search_patient . "%')";
 }
 if (!empty($search_service)) {
     $sql .= " AND s.service_name LIKE '%" . $search_service . "%'";
@@ -94,7 +94,7 @@ $appointments = $query->fetchAll(PDO::FETCH_ASSOC);
                 foreach ($appointments as $row) {
                     echo "<tr>
                         <td>" . htmlspecialchars($row['appointment_id']) . "</td>
-                        <td>" . htmlspecialchars($row['first_name'] . " " . $row['last_name']) . "</td>
+                        <td>" . htmlspecialchars($row['firstName'] . " " . $row['lastName']) . "</td>
                         <td>" . date('Y-m-d H:i', strtotime($row['appointment_date'])) . "</td>
                         <td>" . htmlspecialchars($row['service_name']) . "</td>
                         <td>" . htmlspecialchars($row['status']) . "</td>

@@ -15,7 +15,7 @@ if ($appointment_id === 0) {
 }
 
 // Fetch the current appointment details
-$sql = "SELECT a.appointment_id, p.first_name, p.last_name, p.phone, p.email, a.appointment_date, s.service_name, a.status, a.service_id
+$sql = "SELECT a.appointment_id, p.firstName, p.lastName, p.email, a.appointment_date, s.service_name, a.status, a.service_id
         FROM appointments a
         JOIN patients p ON a.patient_id = p.patient_id
         JOIN services s ON a.service_id = s.service_id
@@ -35,9 +35,8 @@ $services = $services_query->fetchAll(PDO::FETCH_ASSOC);
 
 // Handle form submission for updating the appointment
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $first_name = trim($_POST['first_name']);
-    $last_name = trim($_POST['last_name']);
-    $phone = trim($_POST['phone']);
+    $firstName = trim($_POST['firstName']);
+    $lastName = trim($_POST['lastName']);
     $email = trim($_POST['email']);
     $appointment_date = trim($_POST['appointment_date']);
     $service_id = (int)$_POST['service_id'];
@@ -45,14 +44,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Update the appointment in the database
     $update_sql = "UPDATE appointments a
                    JOIN patients p ON a.patient_id = p.patient_id
-                   SET p.first_name = :first_name, p.last_name = :last_name, p.phone = :phone, p.email = :email,
+                   SET p.firstName = :firstName, p.lastName = :lastName, p.email = :email,
                        a.appointment_date = :appointment_date, a.service_id = :service_id
                    WHERE a.appointment_id = :appointment_id";
     $update_query = $conn->prepare($update_sql);
     $update_query->execute([
-        ':first_name' => $first_name,
-        ':last_name' => $last_name,
-        ':phone' => $phone,
+        ':firstName' => $firstName,
+        ':lastName' => $lastName,
         ':email' => $email,
         ':appointment_date' => $appointment_date,
         ':service_id' => $service_id,
@@ -80,16 +78,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h3>Edit Appointment</h3>
         <form method="POST">
             <div class="mb-3">
-                <label for="first_name" class="form-label">First Name</label>
-                <input type="text" class="form-control" id="first_name" name="first_name" value="<?php echo htmlspecialchars($appointment['first_name']); ?>" required>
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" value="<?php echo htmlspecialchars($appointment['firstName']); ?>" required>
             </div>
             <div class="mb-3">
-                <label for="last_name" class="form-label">Last Name</label>
-                <input type="text" class="form-control" id="last_name" name="last_name" value="<?php echo htmlspecialchars($appointment['last_name']); ?>" required>
-            </div>
-            <div class="mb-3">
-                <label for="phone" class="form-label">Contact Number</label>
-                <input type="text" class="form-control" id="phone" name="phone" value="<?php echo htmlspecialchars($appointment['phone']); ?>" required>
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" value="<?php echo htmlspecialchars($appointment['lastName']); ?>" required>
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>

@@ -30,6 +30,9 @@ if (session_status() === PHP_SESSION_NONE) {
                     <li class="nav-item">
                         <a class="nav-link" href="manage_appointments.php">Appointments</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AdminFeedback.php">Feedbacks</a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav">
                     <?php if (isset($_SESSION['username'])): ?>
